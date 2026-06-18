@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
@@ -20,109 +19,80 @@ body{
 
 h1{
     font-family:'Grenze',serif;
-    color:#d50000;
+    color:#d80000;
     font-size:72px;
     font-weight:900;
-    margin-bottom:40px;
+    margin-bottom:50px;
     white-space:nowrap;
 }
 
-.main-image{
+.photo{
     display:block;
     width:100%;
-    max-width:620px;
-    margin:0 auto 50px auto;
-    border-radius:25px;
+    max-width:420px;
+    margin:0 auto 60px auto;
+    border-radius:22px;
 }
 
 p{
     font-family:'Galdeano',sans-serif;
-    font-size:28px;
-    line-height:1.8;
+    font-size:26px;
+    line-height:2;
     max-width:900px;
-    margin:25px auto;
-}
-
-.counter{
-    font-family:'Grenze',serif;
-    font-size:70px;
-    margin-top:60px;
-    color:white;
-}
-
-.goal{
-    font-family:'Galdeano',sans-serif;
-    font-size:28px;
-    color:#cccccc;
-    margin-bottom:20px;
-}
-
-.progress-container{
-    width:90%;
-    max-width:800px;
-    height:24px;
-    background:#222;
-    border-radius:30px;
-    overflow:hidden;
     margin:0 auto 50px auto;
 }
 
-.progress-bar{
-    height:100%;
-    width:0%;
-    background:#d50000;
+.counter{
+    margin-top:70px;
+    margin-bottom:50px;
+}
+
+.counter-number{
+    font-family:'Grenze',serif;
+    color:#d80000;
+    font-size:60px;
+    font-weight:900;
+}
+
+.counter-text{
+    font-family:'Galdeano',sans-serif;
+    font-size:22px;
 }
 
 .button{
     display:inline-block;
-    background:#d50000;
+    background:#d80000;
     color:white;
     text-decoration:none;
-    padding:20px 60px;
-    border-radius:12px;
+    padding:18px 50px;
+    border-radius:8px;
     font-family:'Grenze',serif;
-    font-size:38px;
+    font-size:42px;
     font-weight:700;
+    margin-top:20px;
 }
 
 .footer{
-    margin-top:70px;
-    margin-bottom:60px;
     font-family:'Galdeano',sans-serif;
-    font-size:32px;
-}
-
-.hashtag{
-    color:#d50000;
-    font-weight:bold;
+    font-size:28px;
+    margin-top:90px;
+    margin-bottom:60px;
 }
 
 @media(max-width:600px){
 
-h1{
-    font-size:48px;
-}
+    h1{
+        font-size:56px;
+    }
 
-p{
-    font-size:18px;
-}
+    .counter-number{
+        font-size:42px;
+    }
 
-.counter{
-    font-size:48px;
-}
-
-.goal{
-    font-size:20px;
-}
-
-.button{
-    font-size:24px;
-    padding:16px 35px;
-}
-
-.footer{
-    font-size:24px;
-}
+    .button{
+        font-size:30px;
+        padding:15px 35px;
+    }
 
 }
 
@@ -133,13 +103,14 @@ p{
 
 <h1>MARTÍNEZ OUT!</h1>
 
-<img src="fora.png" alt="Martínez Out" class="main-image">
-
-<p>O sonho português nunca esteve tão perto.</p>
+<img src="fora.png" class="photo" alt="Martinez Out">
 
 <p>
-Uma geração excecional.
-Alguns dos melhores jogadores do mundo.
+O sonho português nunca esteve tão perto.
+</p>
+
+<p>
+Uma geração excepcional. Alguns dos melhores jogadores do mundo.
 Uma oportunidade única de entrar para a história.
 </p>
 
@@ -153,8 +124,7 @@ Foi o reflexo de uma equipa sem identidade, sem ambição e sem rumo.
 </p>
 
 <p>
-Sob o comando de Roberto Martínez,
-Portugal não avança.
+Sob o comando de Roberto Martínez, Portugal não avança.
 Afasta-se do seu destino.
 </p>
 
@@ -171,25 +141,28 @@ Recusamo-nos a ver esta geração de ouro ser sacrificada.
 </p>
 
 <p>
-Portugal tem de se unir.
-Portugal tem de agir.
+Recusamo-nos a ver o maior sonho da nossa nação desmoronar-se sem reagir.
 </p>
 
 <p>
-Assina esta petição.
-Faz ouvir a tua voz.
+Portugal tem de se unir. Portugal tem de agir.
+</p>
+
+<p>
+Assina esta petição. Faz ouvir a tua voz.
+</p>
+
+<p>
+Pelo sonho português.
+</p>
+
+<p>
+MARTÍNEZ FORA! AGORA!
 </p>
 
 <div class="counter">
-<span id="counter">0</span>
-</div>
-
-<div class="goal">
-Objetivo: 50 000 assinaturas
-</div>
-
-<div class="progress-container">
-<div class="progress-bar" id="progressBar"></div>
+    <div class="counter-number">50 000</div>
+    <div class="counter-text">Objetivo de assinaturas</div>
 </div>
 
 <a href="#" class="button">
@@ -197,22 +170,9 @@ Objetivo: 50 000 assinaturas
 </a>
 
 <div class="footer">
-Obrigado por defenderes o futuro da nossa Seleção!<br><br>
-<span class="hashtag">#VaiDarPortugal</span>
+Obrigado por defenderes o futuro da nossa Seleção!<br>
+#VaiDarPortugal
 </div>
-
-<script>
-
-// Valeur temporaire
-let signatures = 0;
-
-document.getElementById("counter").innerText =
-signatures.toLocaleString('pt-PT');
-
-document.getElementById("progressBar").style.width =
-(signatures/50000)*100 + "%";
-
-</script>
 
 </body>
 </html>
