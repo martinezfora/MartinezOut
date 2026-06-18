@@ -12,91 +12,77 @@
 
 body{
     background:#000;
-    color:white;
-    margin:0;
-    padding:20px;
+    color:#fff;
     text-align:center;
+    margin:0;
+    padding:30px 20px;
 }
 
 h1{
     font-family:'Grenze',serif;
     color:#d50000;
-    font-size:72px;
+    font-size:58px;
     font-weight:900;
-    margin:20px 0 40px 0;
-    white-space:nowrap;
+    margin-bottom:40px;
+    line-height:1;
 }
 
 .photo{
     display:block;
-    width:90%;
-    max-width:500px;
+    width:92%;
+    max-width:520px;
     margin:0 auto 50px auto;
-
-    border-radius:35px;
+    border-radius:32px;
     overflow:hidden;
-    clip-path: inset(0 round 35px);
+    box-shadow:0 0 25px rgba(255,0,0,.25);
+}
 
-    box-shadow:0 0 25px rgba(255,0,0,0.3);
+.photo img{
+    width:100%;
+    display:block;
+    border-radius:32px;
 }
 
 p{
     font-family:'Galdeano',sans-serif;
-    font-size:22px;
-    line-height:1.8;
-    max-width:900px;
-    margin:30px auto;
-}
-
-.slogan{
-    font-size:26px;
-}
-
-.call{
-    color:#ffffff;
-    font-size:24px;
-    margin-top:40px;
-}
-
-.final{
-    font-family:'Grenze',serif;
-    color:#d50000;
-    font-size:34px;
-    margin-top:30px;
+    font-size:20px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0 auto 35px auto;
 }
 
 .counter-title{
     font-family:'Grenze',serif;
-    font-size:30px;
+    color:#999;
+    font-size:24px;
     letter-spacing:4px;
-    color:#cccccc;
-    margin-top:70px;
-    margin-bottom:15px;
+    margin-top:60px;
+    margin-bottom:10px;
 }
 
 .counter{
     font-family:'Grenze',serif;
     color:#d50000;
-    font-size:70px;
+    font-size:58px;
     font-weight:900;
-    margin-bottom:20px;
+    margin-bottom:15px;
 }
 
 .progress-container{
-    width:80%;
+    width:85%;
     max-width:500px;
-    height:20px;
+    height:18px;
     background:#222;
-    border-radius:50px;
-    margin:0 auto 35px auto;
+    border-radius:999px;
     overflow:hidden;
+    margin:0 auto 35px auto;
 }
 
 .progress-bar{
     width:0%;
     height:100%;
     background:#d50000;
-    border-radius:50px;
+    border-radius:999px;
 }
 
 .button{
@@ -104,47 +90,41 @@ p{
     background:#d50000;
     color:white;
     text-decoration:none;
+    padding:18px 40px;
+    border-radius:12px;
     font-family:'Grenze',serif;
-    font-size:36px;
-    font-weight:bold;
-    padding:20px 40px;
-    border-radius:20px;
-    margin-top:10px;
+    font-size:30px;
+    font-weight:700;
 }
 
 .footer{
-    margin-top:70px;
-    margin-bottom:60px;
     font-family:'Galdeano',sans-serif;
-    font-size:24px;
+    font-size:38px;
+    margin-top:90px;
+    margin-bottom:50px;
+    line-height:1.4;
 }
 
 @media(max-width:600px){
 
     h1{
-        font-size:48px;
-    }
-
-    .photo{
-        width:95%;
-        max-width:420px;
+        font-size:46px;
     }
 
     p{
-        font-size:18px;
+        font-size:19px;
     }
 
     .counter{
-        font-size:55px;
+        font-size:46px;
     }
 
     .button{
-        font-size:26px;
-        padding:18px 30px;
+        font-size:24px;
     }
 
     .footer{
-        font-size:20px;
+        font-size:28px;
     }
 }
 
@@ -155,11 +135,11 @@ p{
 
 <h1>MARTÍNEZ OUT!</h1>
 
-<img src="fora.png" alt="Martínez Fora" class="photo">
+<div class="photo">
+    <img src="fora.png" alt="Martínez Out">
+</div>
 
-<p class="slogan">
-O sonho português nunca esteve tão perto.
-</p>
+<p>O sonho português nunca esteve tão perto.</p>
 
 <p>
 Uma geração excecional. Alguns dos melhores jogadores do mundo.
@@ -182,11 +162,17 @@ Afasta-se do seu destino.
 
 <p>
 Cada jogo é uma oportunidade perdida.
+</p>
+
+<p>
 Cada minuto é um minuto roubado ao sonho de milhões de portugueses.
 </p>
 
 <p>
 Recusamo-nos a ver esta geração de ouro ser sacrificada.
+</p>
+
+<p>
 Recusamo-nos a ver o maior sonho da nossa nação desmoronar-se sem reagir.
 </p>
 
@@ -195,7 +181,7 @@ Portugal tem de se unir.
 Portugal tem de agir.
 </p>
 
-<p class="call">
+<p>
 Assina esta petição. Faz ouvir a tua voz.
 </p>
 
@@ -203,9 +189,9 @@ Assina esta petição. Faz ouvir a tua voz.
 Pelo sonho português.
 </p>
 
-<div class="final">
+<p>
 MARTÍNEZ FORA! AGORA!
-</div>
+</p>
 
 <div class="counter-title">
 ASSINATURAS
@@ -229,21 +215,14 @@ Obrigado por defenderes o futuro da nossa Seleção!<br>
 </div>
 
 <script>
-
-let assinaturas = 0;
+const assinaturas = 0;
 const objetivo = 50000;
 
-function atualizar() {
+document.getElementById("count").innerText =
+assinaturas.toLocaleString('pt-PT');
 
-    document.getElementById("count").innerText =
-        assinaturas.toLocaleString('pt-PT');
-
-    document.getElementById("progressBar").style.width =
-        (assinaturas / objetivo * 100) + "%";
-}
-
-atualizar();
-
+document.getElementById("progressBar").style.width =
+(assinaturas / objetivo * 100) + "%";
 </script>
 
 </body>
