@@ -214,6 +214,17 @@ Obrigado por defenderes o futuro da nossa Seleção!<br>
 #VaiDarPortugal
 </div>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+  increment
+} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyC-4Fuvh_6MV0JSFOT3zZu-NzRrwBTwEII",
   authDomain: "martinezout-1437d.firebaseapp.com",
@@ -228,48 +239,55 @@ const db = getFirestore(app);
 
 const OBJECTIF = 50000;
 
-async function chargerVotes() {
+const countEl = document.getElementById("count");
+const bar = document.getElementById("progressBar");
+const btn = document.querySelector(".button");
+
+async function initDoc() {
   const ref = doc(db, "petition", "stats");
   const snap = await getDoc(ref);
 
-  if (snap.exists()) {
-    const votes = snap.data().votes || 0;
-
-    document.getElementById("count").innerText =
-      votes.toLocaleString("pt-PT");
-
-    document.getElementById("progressBar").style.width =
-      Math.min((votes / OBJECTIF) * 100, 100) + "%";
+  if (!snap.exists()) {
+    await setDoc(ref, { votes: 0 });
   }
 }
 
-async function signer() {
+async function loadVotes() {
+  const ref = doc(db, "petition", "stats");
+  const snap = await getDoc(ref);
 
-  if(localStorage.getItem("signed")){
-    alert("Já assinaste esta petição.");
+  if (!snap.exists()) return;
+
+  const votes = snap.data().votes || 0;
+
+  countEl.innerText = votes.toLocaleString("fr-FR");
+
+  const percent = Math.min((votes / OBJECTIF) * 100, 100);
+  bar.style.width = percent + "%";
+}
+
+async function vote() {
+  const ref = doc(db, "petition", "stats");
+
+  if (localStorage.getItem("voted")) {
+    alert("Déjà signé !");
     return;
   }
-
-  const ref = doc(db, "petition", "stats");
 
   await updateDoc(ref, {
     votes: increment(1)
   });
 
-  localStorage.setItem("signed", "true");
+  localStorage.setItem("voted", "true");
 
-  chargerVotes();
+  loadVotes();
 }
 
-document.querySelector(".button").addEventListener("click", function(e){
+btn.addEventListener("click", function(e){
   e.preventDefault();
-  signer();
+  vote();
 });
 
-chargerVotes();
-
-setInterval(chargerVotes, 3000);
+initDoc().then(loadVotes);
+setInterval(loadVotes, 3000);
 </script>
-
-</body>
-</html>
