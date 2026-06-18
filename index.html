@@ -13,65 +13,64 @@
 body{
     background:#000;
     color:white;
-    margin:0;
     text-align:center;
+    margin:0;
     padding:40px 20px;
 }
 
 h1{
     font-family:'Grenze',serif;
     color:#d50000;
-    font-size:58px;
+    font-size:72px;
     font-weight:900;
-    margin-bottom:50px;
+    margin-bottom:40px;
     white-space:nowrap;
 }
 
-img{
-    width:320px;
-    max-width:90%;
+.main-image{
     display:block;
+    width:100%;
+    max-width:620px;
     margin:0 auto 50px auto;
+    border-radius:25px;
 }
 
 p{
     font-family:'Galdeano',sans-serif;
-    font-size:18px;
-    line-height:1.9;
-    color:#d8d8d8;
-    max-width:700px;
-    margin:35px auto;
+    font-size:28px;
+    line-height:1.8;
+    max-width:900px;
+    margin:25px auto;
 }
 
 .counter{
     font-family:'Grenze',serif;
-    font-size:34px;
+    font-size:70px;
+    margin-top:60px;
     color:white;
-    margin-top:40px;
 }
 
 .goal{
     font-family:'Galdeano',sans-serif;
-    font-size:18px;
-    color:#bbbbbb;
-    margin-top:10px;
+    font-size:28px;
+    color:#cccccc;
+    margin-bottom:20px;
 }
 
-.progress{
+.progress-container{
     width:90%;
-    max-width:700px;
-    height:22px;
+    max-width:800px;
+    height:24px;
     background:#222;
-    margin:20px auto 40px auto;
-    border-radius:20px;
+    border-radius:30px;
     overflow:hidden;
+    margin:0 auto 50px auto;
 }
 
-.bar{
+.progress-bar{
     height:100%;
-    background:#d50000;
     width:0%;
-    transition:1s;
+    background:#d50000;
 }
 
 .button{
@@ -79,34 +78,50 @@ p{
     background:#d50000;
     color:white;
     text-decoration:none;
-    padding:18px 40px;
-    border-radius:8px;
+    padding:20px 60px;
+    border-radius:12px;
     font-family:'Grenze',serif;
-    font-size:36px;
+    font-size:38px;
     font-weight:700;
 }
 
 .footer{
     margin-top:70px;
-    margin-bottom:80px;
+    margin-bottom:60px;
     font-family:'Galdeano',sans-serif;
-    font-size:26px;
-    color:white;
+    font-size:32px;
+}
+
+.hashtag{
+    color:#d50000;
+    font-weight:bold;
 }
 
 @media(max-width:600px){
 
 h1{
-    font-size:42px;
+    font-size:48px;
+}
+
+p{
+    font-size:18px;
+}
+
+.counter{
+    font-size:48px;
+}
+
+.goal{
+    font-size:20px;
 }
 
 .button{
-    font-size:28px;
-    padding:15px 25px;
+    font-size:24px;
+    padding:16px 35px;
 }
 
 .footer{
-    font-size:20px;
+    font-size:24px;
 }
 
 }
@@ -118,12 +133,13 @@ h1{
 
 <h1>MARTÍNEZ OUT!</h1>
 
-<img src="fora.png" alt="Martinez Out">
+<img src="fora.png" alt="Martínez Out" class="main-image">
 
 <p>O sonho português nunca esteve tão perto.</p>
 
 <p>
-Uma geração excecional. Alguns dos melhores jogadores do mundo.
+Uma geração excecional.
+Alguns dos melhores jogadores do mundo.
 Uma oportunidade única de entrar para a história.
 </p>
 
@@ -137,7 +153,8 @@ Foi o reflexo de uma equipa sem identidade, sem ambição e sem rumo.
 </p>
 
 <p>
-Sob o comando de Roberto Martínez, Portugal não avança.
+Sob o comando de Roberto Martínez,
+Portugal não avança.
 Afasta-se do seu destino.
 </p>
 
@@ -154,53 +171,46 @@ Recusamo-nos a ver esta geração de ouro ser sacrificada.
 </p>
 
 <p>
-Portugal tem de se unir. Portugal tem de agir.
+Portugal tem de se unir.
+Portugal tem de agir.
 </p>
 
 <p>
-Assina esta petição. Faz ouvir a tua voz.
+Assina esta petição.
+Faz ouvir a tua voz.
 </p>
 
 <div class="counter">
-<span id="count">41783</span> assinaturas
+<span id="counter">0</span>
 </div>
 
 <div class="goal">
 Objetivo: 50 000 assinaturas
 </div>
 
-<div class="progress">
-<div id="bar" class="bar"></div>
+<div class="progress-container">
+<div class="progress-bar" id="progressBar"></div>
 </div>
 
-<a
-class="button"
-href="TON-LIEN-DE-PETITION"
-target="_blank">
+<a href="#" class="button">
 ✓ ASSINA A PETIÇÃO
 </a>
 
 <div class="footer">
-Obrigado por defenderes o futuro da nossa Seleção!<br>
-<b>#VaiDarPortugal</b>
+Obrigado por defenderes o futuro da nossa Seleção!<br><br>
+<span class="hashtag">#VaiDarPortugal</span>
 </div>
 
 <script>
 
-const objectif = 50000;
-let signatures = 41783;
+// Valeur temporaire
+let signatures = 0;
 
-function updateBar(){
+document.getElementById("counter").innerText =
+signatures.toLocaleString('pt-PT');
 
-document.getElementById("count").innerText =
-signatures.toLocaleString("pt-PT");
-
-document.getElementById("bar").style.width =
-(signatures/objectif*100)+"%";
-
-}
-
-updateBar();
+document.getElementById("progressBar").style.width =
+(signatures/50000)*100 + "%";
 
 </script>
 
