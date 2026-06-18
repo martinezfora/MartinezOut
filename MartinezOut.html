@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martinez Out</title>
+
+<style>
+body{
+    margin:0;
+    background:#111;
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
+}
+
+.container{
+    margin-top:100px;
+}
+
+h1{
+    font-size:4rem;
+    color:#ff3b3b;
+}
+
+#counter{
+    font-size:5rem;
+    font-weight:bold;
+    margin:30px 0;
+}
+
+button{
+    background:#ff3b3b;
+    color:white;
+    border:none;
+    padding:20px 40px;
+    font-size:2rem;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+p{
+    font-size:1.4rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>MARTINEZ OUT</h1>
+
+    <div id="counter">0</div>
+
+    <p>personnes ont voté</p>
+
+    <button onclick="vote()">JE VOTE</button>
+</div>
+
+<script>
+const namespace = "martinez-out";
+const key = "votes";
+
+async function loadCounter() {
+    const res = await fetch(`https://api.countapi.xyz/get/${namespace}/${key}`);
+    const data = await res.json();
+
+    if(data.value === undefined){
+        await fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&value=0`);
+        document.getElementById("counter").innerText = 0;
+    } else {
+        document.getElementById("counter").innerText = data.value;
+    }
+}
+
+async function vote() {
+
+    if(localStorage.getItem("alreadyVoted")){
+        alert("Tu as déjà voté !");
+        return;
+    }
+
+    const res = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+    const data = await res.json();
+
+    document.getElementById("counter").innerText = data.value;
+
+    localStorage.setItem("alreadyVoted","true");
+}
+
+loadCounter();
+</script>
+
+</body>
+</html>
+sinon quelqu'un pourrait utiliser le même compteur.
+
+Quand tu as créé le fichier et cliqué sur Commit new file, envoie une capture d'écran de la page du dépôt et je te dirai comment activer GitHub Pages pour que ton site soit accessible à tout le monde.
