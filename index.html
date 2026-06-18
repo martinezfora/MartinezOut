@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
@@ -19,27 +20,33 @@ body{
 
 h1{
     font-family:'Grenze',serif;
-    color:#d80000;
-    font-size:72px;
+    color:#e00000;
+    font-size:52px;
     font-weight:900;
+    line-height:1;
     margin-bottom:50px;
-    white-space:nowrap;
 }
 
 .photo{
     display:block;
-    width:100%;
+    width:80%;
     max-width:420px;
     margin:0 auto 60px auto;
-    border-radius:22px;
+    border-radius:24px;
+}
+
+img{
+    display:block;
+    width:100%;
+    border-radius:24px;
 }
 
 p{
     font-family:'Galdeano',sans-serif;
-    font-size:26px;
-    line-height:2;
-    max-width:900px;
-    margin:0 auto 50px auto;
+    font-size:18px;
+    line-height:1.9;
+    max-width:850px;
+    margin:0 auto 40px auto;
 }
 
 .counter{
@@ -47,42 +54,55 @@ p{
     margin-bottom:50px;
 }
 
-.counter-number{
-    font-family:'Grenze',serif;
-    color:#d80000;
-    font-size:60px;
-    font-weight:900;
+.counter-label{
+    font-family:'Galdeano',sans-serif;
+    color:#999;
+    font-size:16px;
+    letter-spacing:2px;
 }
 
-.counter-text{
+.counter-number{
+    font-family:'Grenze',serif;
+    color:#e00000;
+    font-size:56px;
+    font-weight:900;
+    margin:10px 0;
+}
+
+.counter-goal{
     font-family:'Galdeano',sans-serif;
-    font-size:22px;
+    color:#ccc;
+    font-size:18px;
 }
 
 .button{
     display:inline-block;
-    background:#d80000;
+    margin-top:20px;
+    background:#e00000;
     color:white;
     text-decoration:none;
-    padding:18px 50px;
-    border-radius:8px;
+    padding:18px 45px;
+    border-radius:10px;
     font-family:'Grenze',serif;
-    font-size:42px;
+    font-size:32px;
     font-weight:700;
-    margin-top:20px;
 }
 
 .footer{
     font-family:'Galdeano',sans-serif;
-    font-size:28px;
-    margin-top:90px;
+    font-size:24px;
+    margin-top:80px;
     margin-bottom:60px;
 }
 
 @media(max-width:600px){
 
     h1{
-        font-size:56px;
+        font-size:42px;
+    }
+
+    p{
+        font-size:16px;
     }
 
     .counter-number{
@@ -90,10 +110,9 @@ p{
     }
 
     .button{
-        font-size:30px;
-        padding:15px 35px;
+        font-size:24px;
+        padding:15px 30px;
     }
-
 }
 
 </style>
@@ -105,18 +124,14 @@ p{
 
 <img src="fora.png" class="photo" alt="Martinez Out">
 
-<p>
-O sonho português nunca esteve tão perto.
-</p>
+<p>O sonho português nunca esteve tão perto.</p>
 
 <p>
 Uma geração excepcional. Alguns dos melhores jogadores do mundo.
 Uma oportunidade única de entrar para a história.
 </p>
 
-<p>
-E, no entanto, esse sonho está a escapar-nos.
-</p>
+<p>E, no entanto, esse sonho está a escapar-nos.</p>
 
 <p>
 O empate contra a República Democrática do Congo não foi um acidente.
@@ -128,9 +143,7 @@ Sob o comando de Roberto Martínez, Portugal não avança.
 Afasta-se do seu destino.
 </p>
 
-<p>
-Cada jogo é uma oportunidade perdida.
-</p>
+<p>Cada jogo é uma oportunidade perdida.</p>
 
 <p>
 Cada minuto é um minuto roubado ao sonho de milhões de portugueses.
@@ -161,8 +174,9 @@ MARTÍNEZ FORA! AGORA!
 </p>
 
 <div class="counter">
-    <div class="counter-number">50 000</div>
-    <div class="counter-text">Objetivo de assinaturas</div>
+    <div class="counter-label">ASSINATURAS</div>
+    <div class="counter-number">0</div>
+    <div class="counter-goal">Meta: 50 000</div>
 </div>
 
 <a href="#" class="button">
