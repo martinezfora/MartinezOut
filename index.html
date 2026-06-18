@@ -214,15 +214,61 @@ Obrigado por defenderes o futuro da nossa Seleção!<br>
 #VaiDarPortugal
 </div>
 
-<script>
-const assinaturas = 0;
-const objetivo = 50000;
+const firebaseConfig = {
+  apiKey: "AIzaSyC-4Fuvh_6MV0JSFOT3zZu-NzRrwBTwEII",
+  authDomain: "martinezout-1437d.firebaseapp.com",
+  projectId: "martinezout-1437d",
+  storageBucket: "martinezout-1437d.firebasestorage.app",
+  messagingSenderId: "25127946019",
+  appId: "1:25127946019:web:4312e99b4cb3d33569ee96"
+};
 
-document.getElementById("count").innerText =
-assinaturas.toLocaleString('pt-PT');
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-document.getElementById("progressBar").style.width =
-(assinaturas / objetivo * 100) + "%";
+const OBJECTIF = 50000;
+
+async function chargerVotes() {
+  const ref = doc(db, "petition", "stats");
+  const snap = await getDoc(ref);
+
+  if (snap.exists()) {
+    const votes = snap.data().votes || 0;
+
+    document.getElementById("count").innerText =
+      votes.toLocaleString("pt-PT");
+
+    document.getElementById("progressBar").style.width =
+      Math.min((votes / OBJECTIF) * 100, 100) + "%";
+  }
+}
+
+async function signer() {
+
+  if(localStorage.getItem("signed")){
+    alert("Já assinaste esta petição.");
+    return;
+  }
+
+  const ref = doc(db, "petition", "stats");
+
+  await updateDoc(ref, {
+    votes: increment(1)
+  });
+
+  localStorage.setItem("signed", "true");
+
+  chargerVotes();
+}
+
+document.querySelector(".button").addEventListener("click", function(e){
+  e.preventDefault();
+  signer();
+});
+
+chargerVotes();
+
+setInterval(chargerVotes, 3000);
 </script>
 
 </body>
